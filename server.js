@@ -1,6 +1,7 @@
 const express = require("express");
 const app = express();
-const port = 3000;
+const PORT = 3000 || process.env.PORT;
+
 const {response} = require("express");
 const ejs = require('ejs')
 
@@ -30,8 +31,8 @@ app.use('/watch', watch);
 const start = async () => {
     try {
         await mongoose.connect('mongodb+srv://AlikhanTurash:10080405a@cluster0.xjmm0.mongodb.net/?retryWrites=true&w=majority')
-        app.listen(process.env.port || port, () =>
-            console.log(`App listening at localhost:${port}`)
+        app.listen(process.env.PORT || 3000, () =>
+            console.log(`App listening at localhost:${PORT}`)
         )
     } catch (e) {
         console.log(e)
