@@ -31,9 +31,9 @@ app.use('/watch', watch);
 const start = async () => {
     try {
         await mongoose.connect('mongodb+srv://AlikhanTurash:10080405a@cluster0.xjmm0.mongodb.net/?retryWrites=true&w=majority')
-        app.listen(process.env.PORT || 3000, () =>
-            console.log(`App listening at localhost:${PORT}`)
-        )
+        app.listen(process.env.PORT || 3000, function () {
+            console.log(`http://localhost:3000`, this.address().port, app.settings.env);
+        });
     } catch (e) {
         console.log(e)
     }
